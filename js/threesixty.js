@@ -26,7 +26,7 @@ $(document).ready(function () {
 			spinner,
 	
 			// Stores the total amount of images we have in the sequence
-			totalFrames = 180,
+			totalFrames = 594,
 			// The current frame value of the image slider animation
 			currentFrame = 0,
 			// Stores all the loaded image objects
@@ -66,6 +66,11 @@ $(document).ready(function () {
 		$("#spinner").fadeIn("slow");
 	};
 	
+	function zeroPad(num, places) {
+	  var zero = places - num.toString().length + 1;
+	  return Array(+(zero > 0 && zero)).join("0") + num;
+	}
+	
 	/**
 	* Creates a new <li> and loads the next image in the sequence inside it.
 	* With jQuery we add the "load" event handler to the image, so when it's successfully loaded, we call the "imageLoaded" function.
@@ -74,7 +79,8 @@ $(document).ready(function () {
 		// Creates a new <li>
 		var li = document.createElement("li");
 		// Generates the image file name using the incremented "loadedImages" variable
-		var imageName = "img/threesixty_" + (loadedImages + 1) + ".jpg";
+		// var imageName = "img/threesixty_" + (loadedImages + 1) + ".jpg";
+		var imageName = "img/D16-20160502-Scene-001-0002-" + zeroPad((loadedImages + 1), 7) + "-batch.jpg";
 		/*
 			Creates a new <img> and sets its src attribute to point to the file name we generated.
 			It also hides the image by applying the "previous-image" CSS class to it.
